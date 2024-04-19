@@ -1,0 +1,48 @@
+@import "../node_modules/angular-calendar/css/angular-calendar.css";
+
+.cal-month-view .cal-draggable {
+    cursor: pointer;
+}
+
+.cal-week-view .cal-draggable {
+    cursor: pointer;
+}
+
+.cal-day-view .cal-draggable {
+    cursor: pointer;
+}
+
+.cal-week-view .cal-time-events {
+    height: calc(100vh - 180px) !important;
+    overflow: auto !important;
+    border: none;
+}
+
+.cal-day-view .cal-time-events {
+    height: calc(100vh - 124px) !important;
+}
+
+.cal-week-view .cal-day-column {
+    border-left: none !important;
+}
+
+// .cal-day-columns {
+//     .cal-day-column {
+//         border-left: solid 1px #e1e1e1 !important;
+//     }
+// }
+
+.cal-week-view mwl-calendar-week-view-hour-segment,
+.cal-week-view .cal-hour-segment {
+    border-left: solid 1px #e1e1e1 !important;
+}
+
+.cal-week-view .cal-day-headers,
+.cal-week-view .cal-all-day-events .cal-events-row {
+    margin-right: 14px !important;
+}
+
+.cal-week-view .cal-all-day-events {
+    border: none;
+    border-bottom: solid 1px #e1e1e1;
+}

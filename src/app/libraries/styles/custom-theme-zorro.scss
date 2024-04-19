@@ -1,0 +1,140 @@
+.ant-menu.ant-menu-dark,
+.ant-menu-dark .ant-menu-sub,
+.ant-menu.ant-menu-dark .ant-menu-sub {
+    background: #001628;
+}
+
+.ant-transfer-list-body {
+    overflow: auto !important;
+}
+
+.ant-layout-header {
+    height: 50px;
+    position: relative;
+    z-index: 100;
+    line-height: calc(100% + 5px) !important;
+}
+
+.ant-card-body {
+    display: none;
+}
+
+.cls-layout {
+    background: #fff !important;
+    .inner-content {
+        background: inherit !important;
+    }
+}
+
+.ant-modal-content {
+    height: 100% !important;
+}
+
+// Tener cuidado al modificar este estilo
+.ant-modal-wrap {
+    overflow: hidden;
+}
+
+.cls-card-module {
+    width: fit-content;
+    min-width: 150px;
+    text-align: center;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #02274a;
+    background: #ffffff;
+    border: solid 1px #e6e6e6;
+
+    .ant-card-body {
+        padding: 10px 10px 13px;
+    }
+
+    .cls-icon {
+        font-size: 35px;
+        color: #1086c7;
+    }
+
+    h2 {
+        font-size: 14px;
+        color: #02274a;
+        font-weight: 400;
+    }
+
+    @media (max-width: 600px) {
+        left: -5px px;
+        width: calc(100% - 40px);
+    }
+}
+
+.cls-hidden-header-drawer {
+    .ant-drawer-header {
+        display: none !important;
+    }
+}
+
+.cls-header-left {
+    .ant-page-header-heading {
+        display: flex;
+        justify-content: flex-start !important;
+        .cls-back {
+            cursor: pointer;
+        }
+    }
+}
+
+.ant-timeline-item {
+    padding-bottom: 5px;
+}
+
+// Table
+.ant-table-cell {
+    padding: 8px 8px 5px !important;
+}
+
+.ant-form-item {
+    margin-bottom: 10px !important;
+}
+
+nz-form-label {
+    .anticon {
+        font-size: 18px !important;
+    }
+}
+
+.ant-spin-nested-loading > div > .ant-spin {
+    max-height: 100%;
+}
+
+.ant-spin-blur {
+    opacity: 0.3 !important;
+}
+
+.ant-drawer-body {
+    overflow: hidden !important;
+}
+
+.ant-tabs-nav {
+    margin: 0 0 10px 0 !important;
+}
+
+.ant-progress-steps-item {
+    background: #d9d9d9;
+}
+
+.ant-drawer-wrapper-body,
+.ant-drawer-header {
+    background: var(--bg-color-second);
+    border-color: var(--second-color);
+
+    a,
+    p,
+    .cls-icon-menu,
+    .cls-text-drawer {
+        font-size: 20px;
+        color: var(--second-color);
+    }
+}
+
+.anticon-down {
+    color: #fff;
+}

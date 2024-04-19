@@ -1,0 +1,93 @@
+.cls-our-team {
+  nz-table {
+    nz-table-inner-default {
+      background: var(--bg-color-third);
+    }
+  }
+  .cls-card-client {
+  }
+
+  .cls-contain-0 {
+    background: var(--bg-color-second);
+    height: calc(100vh - 50px);
+    z-index: 100;
+    position: relative;
+    width: calc(100%);
+
+    .cls-text-erp {
+      background: #03bfff;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      font-weight: bold;
+      font-size: 20px;
+    }
+
+    .cls-line-fenix {
+      width: 40%;
+      height: 4px;
+      background: rgb(3, 191, 255);
+      background: linear-gradient(
+        159deg,
+        rgba(3, 191, 255, 1) 0%,
+        rgba(3, 191, 255, 1) 40%,
+        rgba(119, 2, 255, 1) 80%,
+        rgba(119, 2, 255, 1) 100%
+      );
+    }
+
+    .cls-text-pos {
+      background: #7702ff;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      font-weight: bold;
+      font-size: 20px;
+      color: #fff;
+    }
+
+    .cls-erp {
+      padding-top: 90px;
+      height: 100%;
+      background-color: var(--bg-color-second);
+    }
+    .cls-pos {
+      padding-top: 90px;
+      height: 100%;
+      background-color: var(--bg-color-four);
+    }
+  }
+
+  nz-carousel {
+    height: 470px;
+    width: 800px;
+    @media only screen and (max-width: 600px) {
+      height: 280px;
+      width: 100%;
+    }
+  }
+
+  [nz-carousel-content] {
+    text-align: start;
+    background: var(--bg-color-second);
+    color: #fff;
+  }
+
+  h3 {
+    color: #fff;
+    margin-bottom: 0;
+    user-select: none;
+  }
+
+  .cls-arrow {
+    font-size: 40px;
+    color: #03bfff;
+    position: relative;
+    top: 20px;
+    cursor: pointer;
+
+    @media only screen and (max-width: 600px) {
+      font-size: 25px;
+    }
+  }
+}

@@ -1,0 +1,108 @@
+app-header {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 100;
+    background: var(--bg-color-primary);
+
+    nz-divider {
+        border-left: 1px solid #343333 !important;
+    }
+
+    ul {
+        list-style: none;
+        background: inherit;
+        margin: 0;
+        height: 100%;
+
+        a {
+            font-size: 16px;
+            cursor: pointer;
+            -webkit-user-select: none;
+            user-select: none;
+            color: #03bdf2;
+            // background: linear-gradient(to right, #d499ff 3%, #a16dff 50%);
+            background: linear-gradient(to right, #03bdf2 3%, #2196f3 50%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            // font-family: "Montserrat", sans-serif;
+            transition: all 0.2s ease-in-out;
+        }
+        a:after {
+            display: block;
+            content: "";
+            border-bottom: solid 1px transparent;
+            border-image: linear-gradient(
+                159deg,
+                rgba(0, 0, 0, 1) 0%,
+                rgba(103, 217, 255, 1) 30%,
+                rgba(103, 217, 255, 1) 70%,
+                rgba(0, 0, 0, 1) 100%
+            );
+            border-image-slice: 1;
+            width: 100%;
+            transform: scaleX(0);
+            transform-origin: 0% 50%;
+            transition: all 250ms ease-in-out;
+        }
+
+        a:hover:after,
+        .cls-route-active:after {
+            transform-origin: 0% 50%;
+            transform: scaleX(1);
+            padding-top: 5px;
+        }
+
+        .cls-a-focus {
+            // background: linear-gradient(to right, #12a3f4 3%, #67d9ff 100%);
+            background: linear-gradient(to right, #d499ff 3%, #a16dff 100%);
+            color: #fff;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: bold;
+        }
+    }
+
+    .cls-logotipo {
+        height: 40px;
+        cursor: pointer;
+        @media only screen and (max-width: 600px) {
+            height: 20px;
+        }
+    }
+
+    .cls-social {
+        height: 20px;
+        cursor: pointer;
+    }
+
+    .cls-icon-menu {
+        font-size: 20px;
+        color: var(--second-color);
+    }
+
+    .cls-text-drawer {
+        font-size: 20px;
+        color: var(--second-color);
+    }
+}
+
+.cls-drawer-header {
+    .cls-icon-menu {
+        font-size: 20px;
+        color: var(--second-color);
+    }
+
+    .cls-text-drawer {
+        font-size: 20px;
+        color: var(--second-color);
+    }
+}
+
+.cls-drawer-body {
+    .cls-route-active {
+        background: #0a303f;
+        padding: 0px 20px;
+        border-radius: 4px;
+    }
+}

@@ -1,0 +1,185 @@
+<div
+  class="cls-row-between cls-h-100"
+  [ngStyle]="{ padding: globalService.device.isDesktop ? '0 30px' : '0 15px' }"
+>
+  @defer(when globalService.device.isDesktop){
+  <ng-container *ngTemplateOutlet="temHeaderDesktop"></ng-container>
+  } @defer (when globalService.device.isMobile){
+  <ng-container *ngTemplateOutlet="temHeaderMobile"></ng-container>
+  }
+</div>
+
+<ng-template #temHeaderDesktop>
+  <div class="cls-row cls-gap-20 cls-a-center cls-pl-10 cls-pr-10">
+    <img class="cls-logotipo" src="/assets/logos/logotipo.svg" alt="" />
+  </div>
+
+  <!-- <nav class="cls-row cls-j-center cls-w-100" style="height: 100%">
+    <ul class="cls-row cls-a-center cls-gap-20">
+      <li>
+        <a
+          (click)="goRouter('/home', 'idHome')"
+          [ngClass]="{
+            'cls-route-active': globalService.currentRoute == '/home'
+          }"
+          >{{ "HOME" | translate }}</a
+        >
+      </li>
+      <nz-divider nzType="vertical"></nz-divider>
+      <li>
+        <a
+          (click)="goRouter('/services', 'idServices')"
+          [ngClass]="{
+            'cls-route-active': globalService.currentRoute == '/services'
+          }"
+          >{{ "SERVICES" | translate }}</a
+        >
+      </li>
+      <nz-divider nzType="vertical"></nz-divider>
+      <li>
+        <a
+          (click)="goRouter('/fenix', 'idFenix')"
+          [ngClass]="{
+            'cls-route-active': globalService.currentRoute == '/fenix'
+          }"
+          >Fénix</a
+        >
+      </li>
+      <nz-divider nzType="vertical"></nz-divider>
+      <li>
+        <a
+          (click)="goRouter('/our-team', 'idOurTeam')"
+          [ngClass]="{
+            'cls-route-active': globalService.currentRoute == '/our-team'
+          }"
+          >{{ "OURTEAM" | translate }}</a
+        >
+      </li>
+      <nz-divider nzType="vertical"></nz-divider>
+      <li>
+        <a
+          (click)="goRouter('/clients', 'idClients')"
+          [ngClass]="{
+            'cls-route-active': globalService.currentRoute == '/clients'
+          }"
+          >{{ "CLIENTS" | translate }}</a
+        >
+      </li>
+    </ul>
+  </nav> -->
+
+  <div
+    class="cls-row cls-a-center cls-pl-10 cls-pr-10 cls-gap-10"
+    style="min-width: 108px"
+    nz-tooltip
+    nzTooltipTitle="Escríbenos un mensaje"
+    nzTooltipColor="#ff9800"
+    nzTooltipPlacement="bottom"
+  >
+    <a (click)="clickWhatAsApp()">
+      <img class="cls-social" src="/assets/icons/social/whatsapp.svg" alt=""
+    /></a>
+    <ul class="cls-p-0" style="height: fit-content">
+      <li>
+        <a (click)="scroll($event, 'footer')">{{ "CONTACTUS" | translate }}</a>
+      </li>
+    </ul>
+  </div>
+</ng-template>
+
+<ng-template #temHeaderMobile>
+  <div class="cls-row-between cls-a-center cls-w-100">
+    <div class="cls-row cls-gap-20 cls-a-center cls-pr-10">
+      <img class="cls-logotipo" src="/assets/logos/logotipo.svg" alt="" />
+      <img
+        (click)="openEmail()"
+        class="cls-social"
+        src="/assets/icons/social/email.svg"
+        alt=""
+      />
+      <a (click)="clickWhatAsApp()">
+        <img class="cls-social" src="/assets/icons/social/whatsapp.svg" alt=""
+      /></a>
+    </div>
+
+    <!-- <span
+      nz-icon
+      nzType="menu-fold"
+      nzTheme="outline"
+      class="cls-icon-menu"
+      (click)="visibleMenuMobile = true"
+    ></span> -->
+  </div>
+
+  <!-- <nz-drawer
+    class="cls-drawer-header"
+    [nzClosable]="false"
+    [nzVisible]="visibleMenuMobile"
+    nzPlacement="right"
+    [nzTitle]="temDrawerHeader"
+    (nzOnClose)="close()"
+  >
+    <ng-template #temDrawerHeader>
+      <div class="cls-row cls-a-center cls-j-end cls-w-100">
+        <span
+          nz-icon
+          nzType="menu-unfold"
+          nzTheme="outline"
+          class="cls-icon-menu"
+          (click)="visibleMenuMobile = false"
+        ></span>
+      </div>
+    </ng-template>
+
+    <ng-container *nzDrawerContent>
+      <div
+        class="cls-column cls-gap-20 cls-a-center cls-j-center cls-drawer-body"
+        style="height: calc(100% - 50px)"
+      >
+        <a
+          (click)="goRouter('/home', 'idHome')"
+          [ngClass]="{
+            'cls-route-active': globalService.currentRoute == '/home'
+          }"
+          >{{ "HOME" | translate }}</a
+        >
+        <div class="cls-line-h"></div>
+        <a
+          (click)="goRouter('/services', 'idServices')"
+          [ngClass]="{
+            'cls-route-active': globalService.currentRoute == '/services'
+          }"
+          >{{ "SERVICES" | translate }}</a
+        >
+        <div class="cls-line-h"></div>
+
+        <a
+          (click)="goRouter('/fenix', 'idFenix')"
+          [ngClass]="{
+            'cls-route-active': globalService.currentRoute == '/fenix'
+          }"
+          >Fénix</a
+        >
+        <div class="cls-line-h"></div>
+        <a
+          (click)="goRouter('/our-team', 'idOurTeam')"
+          [ngClass]="{
+            'cls-route-active': globalService.currentRoute == '/our-team'
+          }"
+          >{{ "OURTEAM" | translate }}</a
+        >
+        <div class="cls-line-h"></div>
+        <a
+          (click)="goRouter('/clients', 'idClients')"
+          [ngClass]="{
+            'cls-route-active': globalService.currentRoute == '/clients'
+          }"
+          >{{ "CLIENTS" | translate }}</a
+        >
+        <div class="cls-line-h"></div>
+        <a (click)="scroll($event, 'footer')">{{ "CONTACTUS" | translate }}</a>
+        <div class="cls-line-h"></div>
+      </div>
+    </ng-container>
+  </nz-drawer> -->
+</ng-template>

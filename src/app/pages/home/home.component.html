@@ -1,0 +1,102 @@
+<div class="cls-column cls-w-100 cls-home">
+  <div id="idHome" class="cls-contain-0 cls-row cls-a-center cls-j-center">
+    <div class="cls-team cls-column cls-gap-20 cls-a-center cls-j-center">
+      @defer(when globalService.device.isDesktop ){
+      <img src="/assets/bg/bg-2.jpg" alt="" />
+      } @defer(when globalService.device.isMobile){
+      <img src="/assets/bg/bg-5.jpg" alt="" style="object-position: right" />
+      }
+
+      <h2 class="cls-title-deg cls-title-painting">
+        {{ "HOME" | translate }}
+      </h2>
+      <div
+        class="cls-column cls-a-center cls-gap-0 cls-cursor-p"
+        (click)="scroll($event, 'idExperience')"
+        role="button"
+      >
+        <button class="cls-button-ang cls-animate-button-ang">
+          {{ "READMORE" | translate }}
+        </button>
+        <span
+          class="cls-cursor-p cls-arrow-scroll"
+          nz-icon
+          nzType="down"
+          nzTheme="outline"
+        ></span>
+      </div>
+    </div>
+  </div>
+
+  <div
+    id="idExperience"
+    class="cls-contain-1 cls-column cls-a-center cls-j-center cls-p-20"
+  >
+    <h2 class="cls-title-deg" style="margin-top: 50px !important">
+      {{ "YEARS" | translate }}
+    </h2>
+
+    <div
+      class="cls-column cls-gap-20 cls-a-center cls-j-center"
+      [ngClass]="{
+        'cls-w-100': globalService.device.isMobile,
+        'cls-w-80': globalService.device.isDesktop
+      }"
+    >
+      <p class="cls-p">
+        {{ "EXPERIENCE" | translate }} <br /><br />
+      </p>
+
+      <img src="/assets/bg/bg-3.jpeg" alt="" class="cls-img" />
+    </div>
+
+    <div
+      class="cls-column cls-a-center cls-gap-0 cls-cursor-p"
+      (click)="scroll($event, 'idTecnologies')"
+      role="button"
+    >
+      <button class="cls-button-ang cls-mb-20">
+        {{ "READMORE" | translate }}
+      </button>
+      <span
+        class="cls-cursor-p cls-arrow-scroll"
+        nz-icon
+        nzType="down"
+        nzTheme="outline"
+      ></span>
+    </div>
+  </div>
+
+  <div
+    id="idTecnologies"
+    class="cls-contain-1 cls-column cls-a-center cls-j-center cls-p-20 cls-h-100"
+    style="background: var(--bg-color-third); padding-block: 60px !important"
+  >
+    <h2 class="cls-title-deg">{{ "LASTTECNO" | translate }}</h2>
+    <div
+      class="cls-column cls-gap-20 cls-a-center cls-j-center"
+      [ngClass]="{
+        'cls-w-100': globalService.device.isMobile,
+        'cls-w-80': globalService.device.isDesktop
+      }"
+    >
+      <p class="cls-p2 cls-mb-0 cls-pb-0">
+        {{ "TECNOLOGYS" | translate }} <br /><br />
+      </p>
+    </div>
+    <div
+      class="cls-column cls-gap-20 cls-j-center cls-a-center"
+      [ngClass]="{
+        'cls-w-100': globalService.device.isMobile,
+        'cls-w-60': globalService.device.isDesktop
+      }"
+    >
+      <img
+        src="/assets/bg/bg-4.jpg"
+        alt=""
+        class="cls-img"
+        style="object-position: center"
+      />
+    </div>
+  </div>
+</div>

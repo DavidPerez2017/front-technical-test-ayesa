@@ -1,0 +1,78 @@
+.cls-fenix {
+  nz-table {
+    nz-table-inner-default {
+      background: var(--bg-color-third);
+    }
+  }
+
+  .cls-contain-0 {
+    background: var(--bg-color-second);
+    height: 100%;
+    z-index: 100;
+    position: relative;
+    width: 100%;
+    padding-bottom: 40px;
+
+    .cls-text-erp {
+      background: #03bfff;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      font-weight: bold;
+      font-size: 20px;
+    }
+
+    .cls-line-fenix {
+      width: 40%;
+      height: 4px;
+      background: rgb(3, 191, 255);
+      background: linear-gradient(
+        159deg,
+        rgba(3, 191, 255, 1) 0%,
+        rgba(3, 191, 255, 1) 40%,
+        rgba(119, 2, 255, 1) 80%,
+        rgba(119, 2, 255, 1) 100%
+      );
+    }
+
+    .cls-text-pos {
+      background: #7702ff;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      font-weight: bold;
+      font-size: 20px;
+      color: #fff;
+    }
+
+    .cls-erp {
+      padding-top: 90px;
+      height: 100%;
+      background-color: var(--bg-color-second);
+    }
+    .cls-pos {
+      padding-top: 90px;
+      height: 100%;
+      background-color: var(--bg-color-four);
+    }
+  }
+
+  .cls-color-pos {
+    border-color: #a659ff !important;
+    color: #a659ff !important;
+  }
+
+  .cls-module {
+    padding: 10px 20px;
+    background: transparent;
+    border: none;
+
+    h2 {
+      color: #03bdf2;
+    }
+
+    .cls-purple {
+      color: #9e4aff;
+    }
+  }
+}

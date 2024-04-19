@@ -1,0 +1,90 @@
+<div class="cls-column cls-w-100 cls-our-team">
+  <div
+    id="idOurTeam"
+    class="cls-contain-0 cls-column cls-a-center cls-j-center cls-gap-20"
+    [ngClass]="{
+      'cls-ph-20': globalService.device.isMobile,
+      'cls-ph-40': globalService.device.isMobile
+    }"
+  >
+    <p class="cls-title-deg cls-pb-10" style="font-size: 40px">
+      {{ "OURTEAMMESSAGE" | translate }}
+    </p>
+
+    <div class="cls-row cls-a-center cls-j-center cls-w-100">
+      <span
+        nz-icon
+        nzType="left"
+        nzTheme="outline"
+        (click)="previus()"
+        class="cls-arrow"
+      ></span>
+      <nz-carousel
+        #idCarruselClients
+        nzEnableSwipe="true"
+        nzDots="false"
+        nzAutoPlay
+        [nzAutoPlaySpeed]="5000"
+      >
+        @for (slide of array; track slide.id){
+        <div nz-carousel-content>
+          <div class="cls-row cls-gap-40 cls-a-center cls-j-center">
+            <div class="cls-column cls-gap-40 cls-card-client">
+              <nz-card
+                [nzCover]="temContentCard"
+                style="background: transparent; border: none"
+              >
+              </nz-card>
+
+              <ng-template #temContentCard>
+                <div class="cls-column cls-a-center" style="position: relative">
+                  <img
+                    class="cls-img-card cls-user-no-select"
+                    [src]="slide.urlImage"
+                    [style]="
+                      'width: auto; object-fit: contain;     position: relative; ' +
+                      slide.style
+                    "
+                    alt=""
+                    [height]="globalService.device.isDesktop ? 370 : 180"
+                    priority
+                  />
+                  <!-- height="370" -->
+                  <div class="cls-line-h"></div>
+
+                  <div
+                    class="cls-row cls-gap-0 cls-a-center cls-j-center cls-w-100"
+                  >
+                    <p
+                      class="cls-title-deg cls-p-0 cls-pt-10"
+                      style="font-size: 40px"
+                      [ngStyle]="{
+                        'min-width': currentLang == 'en' ? '230px' : '200px'
+                      }"
+                    >
+                      {{
+                        currentLang == "en"
+                          ? slide.jobPosition
+                          : slide.jobPositionEs
+                      }}
+                    </p>
+                  </div>
+
+                  <div class="cls-p cls-pt-0">{{ slide.name }}</div>
+                </div>
+              </ng-template>
+            </div>
+          </div>
+        </div>
+        }
+      </nz-carousel>
+      <span
+        nz-icon
+        nzType="right"
+        nzTheme="outline"
+        (click)="next()"
+        class="cls-arrow"
+      ></span>
+    </div>
+  </div>
+</div>

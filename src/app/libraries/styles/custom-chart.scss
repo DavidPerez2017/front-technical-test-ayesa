@@ -1,0 +1,15 @@
+.chart-legend .legend-labels {
+    overflow: auto !important;
+}
+
+ngx-charts-number-card .cell .value-text {
+    font-size: 14pt !important;
+}
+
+ngx-charts-number-card .cell .trimmed-label p {
+    font-size: 13px !important;
+}
+
+ngx-charts-number-card .cell .trimmed-label {
+    transform: translateY(-12px) !important;
+}
