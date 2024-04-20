@@ -9,7 +9,7 @@
 }
 
 .ant-layout-header {
-    height: 50px;
+    height: 60px;
     position: relative;
     z-index: 100;
     line-height: calc(100% + 5px) !important;
@@ -23,6 +23,7 @@
     background: #fff !important;
     .inner-content {
         background: inherit !important;
+        height: calc(100vh - 100px);
     }
 }
 
@@ -137,4 +138,11 @@ nz-form-label {
 
 .anticon-down {
     color: #fff;
+}
+
+.ant-btn-primary {
+    color: #fff !important;
+    span {
+        color: inherit !important;
+    }
 }

@@ -5,21 +5,22 @@ import {
   OnInit,
   PLATFORM_ID,
   ViewEncapsulation,
-} from '@angular/core';
+} from "@angular/core";
 
-import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
-import { GlobalService } from '../../services/global.service';
-import { SharedZorroModule } from '../../shared/shared-zorro.module';
-import { HeaderComponent } from './header/header.component';
-import { isPlatformBrowser } from '@angular/common';
-import { FooterComponent } from './footer/footer.component';
+import { NavigationEnd, Router, RouterOutlet } from "@angular/router";
+import { GlobalService } from "../../services/global.service";
+import { SharedZorroModule } from "../../shared/shared-zorro.module";
+import { HeaderComponent } from "./header/header.component";
+import { isPlatformBrowser } from "@angular/common";
+import { FooterComponent } from "./footer/footer.component";
+import { AuthService } from "../../services/auth.service";
 
 @Component({
-  selector: 'app-layout',
+  selector: "app-layout",
   standalone: true,
   imports: [RouterOutlet, SharedZorroModule, HeaderComponent, FooterComponent],
-  templateUrl: './layout.component.html',
-  styleUrls: ['./layout.component.scss'],
+  templateUrl: "./layout.component.html",
+  styleUrls: ["./layout.component.scss"],
   encapsulation: ViewEncapsulation.None,
 })
 export class LayoutComponent implements OnInit {
@@ -28,8 +29,8 @@ export class LayoutComponent implements OnInit {
   screenWidth: number = 0;
   selectItem: any = null;
 
-
   constructor(
+    public authService: AuthService,
     private router: Router,
     private globalService: GlobalService,
     @Inject(PLATFORM_ID) private platformId: any

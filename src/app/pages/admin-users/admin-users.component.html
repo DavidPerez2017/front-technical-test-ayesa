@@ -1,0 +1,72 @@
+<div class="cls-column cls-gap-20 cls-w-100 cls-home cls-a-center">
+  <h3>Administración de usuarios</h3>
+  <nz-table
+    #columnTable
+    [nzData]="listOfData"
+    [nzScroll]="{ x: '400px' }"
+    style="width: 600px"
+    nzSize="middle"
+  >
+    <thead>
+      <tr>
+        <th nzLeft>Correo</th>
+        <th nzLeft>Nombre</th>
+        <th>
+          <div class="cls-row cls-a-center cls-j-end"><span>Action</span></div>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of columnTable.data">
+        <td nzLeft>{{ data.email }}</td>
+        <td nzLeft>
+          @if(!data['edit']){
+          <span>{{ data.name }}</span>
+          } @else {
+          <input
+            type="text"
+            nz-input
+            [(ngModel)]="data.name"
+            minlength="10"
+            maxlength="150"
+            nzSize="small"
+            (keyup.enter)="updateName(data)"
+          />
+          }
+        </td>
+        <td>
+          <div class="cls-row cls-gap-10 cls-a-center cls-j-end">
+            @if(data['edit']){
+            <span
+              nz-icon
+              nzType="close-circle"
+              nzTheme="outline"
+              class="cls-icon-action cls-cursor-p"
+              (click)="data['edit'] = false"
+            ></span>
+            } @else {
+            <span
+              nz-icon
+              nzType="edit"
+              nzTheme="outline"
+              class="cls-icon-action cls-cursor-p"
+              (click)="startEditUser(data)"
+            ></span>
+            }
+
+            <span
+              nz-icon
+              nzType="delete"
+              nzTheme="outline"
+              class="cls-icon-action cls-cursor-p"
+              nz-popconfirm
+              nzPopconfirmTitle="¿Estás seguro de eliminar el usuario?"
+              (nzOnConfirm)="deleteUser(data)"
+              nzPopconfirmPlacement="leftBottom"
+            ></span>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+</div>

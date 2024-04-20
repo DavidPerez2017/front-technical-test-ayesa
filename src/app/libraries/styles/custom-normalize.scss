@@ -1,18 +1,127 @@
-li,
-span,
-p {
-    font-size: 13px;
-    font-family: "Noto Sans", sans-serif;
+body {
+  padding: 0px;
+  margin: 0px;
+}
+
+button,
+a {
+  letter-spacing: 1px;
+  font-family: "Lato", serif;
+}
+
+/* Chrome, Edge and Safari */
+*::-webkit-scrollbar {
+  height: 10px;
+  width: 10px;
+}
+*::-webkit-scrollbar-track {
+  // border-radius: 5px;
+  background-color: var(--bg-color-primary);
+  border: 1px var(--bg-color-primary) solid;
+  -webkit-box-shadow: 0 0 6px #c8c8c8 inset;
+}
+
+*::-webkit-scrollbar-track:hover {
+  background-color: var(--bg-color-third);
+}
+
+*::-webkit-scrollbar-track:active {
+  background-color: var(--bg-color-third);
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--primary-color);
+  border: 1px solid #000000;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: var(--primary-color);
+  border: 1px solid var(--bg-color-second);
+}
+
+*::-webkit-scrollbar-thumb:active {
+  background-color: var(--primary-color);
+  border: 1px solid var(--bg-color-second);
+}
+
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,800");
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: #f6f5f7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: "Montserrat", sans-serif;
+  height: 100vh;
+  // margin: -20px 0 50px;
+}
+
+h1 {
+  font-weight: bold;
+  margin: 0;
 }
 
 h2 {
-    font-size: 24px;
-    font-family: "Noto Sans", sans-serif;
+  text-align: center;
 }
 
+p {
+  font-size: 14px;
+  font-weight: 100;
+  line-height: 20px;
+  letter-spacing: 0.5px;
+  margin: 20px 0 30px;
+}
+
+span {
+  font-size: 12px;
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+button:focus {
+  outline: none;
+}
+
+button:disabled {
+  opacity: 0.2 !important;
+  pointer-events: none !important;
+}
+
+li,
+span,
+p {
+  font-size: 13px;
+  font-family: "Noto Sans", sans-serif;
+  color: var(--text-color);
+}
+
+h2 {
+  font-size: 24px;
+  font-family: "Noto Sans", sans-serif;
+  color: var(--text-color);
+}
 
 /* Firefox */
 * {
   scrollbar-width: thin;
-  scrollbar-color: #397524 #DFE9EB;
+  scrollbar-color: #b0b0b0 #ffffff;
+}
+
+
+
+input,
+.cls-input-large {
+  background-color: #eee;
+  border: none;
+  padding: 12px 15px;
+  margin: 8px 0;
+  width: 100%;
 }

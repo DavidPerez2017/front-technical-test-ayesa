@@ -1,0 +1,69 @@
+<div class="cls-register cls-column cls-a-center cls-j-center">
+  <div class="container" id="container">
+    <form
+      nz-form
+      autofill="off"
+      autocomplete="off"
+      class="form-container sign-in-container"
+      [formGroup]="formRegister"
+    >
+      <div class="cls-form">
+        <div class="cls-row cls-a-center cls-gap-10">
+          <span nz-icon nzType="arrow-left" nzTheme="outline" (click)="goRouter()"></span>
+          <h1>Crea tu cuenta</h1>
+        </div>
+
+        <input
+          autocomplete="off"
+          type="email"
+          placeholder="Correo"
+          nz-input
+          formControlName="email"
+          nzSize="large"
+          class="cls-input-large"
+        />
+
+        <input
+          autocomplete="off"
+          type="text"
+          placeholder="Nombre"
+          nz-input
+          formControlName="name"
+          nzSize="large"
+          class="cls-input-large"
+        />
+
+        <div
+          class="cls-content-pass cls-row cls-a-center cls-j-center cls-w-100"
+        >
+          <input
+            autocomplete="new-password"
+            [type]="showPassword ? 'text' : 'password'"
+            placeholder="Password"
+            nz-input
+            formControlName="password"
+            minlength="8"
+            maxlength="20"
+            nzSize="large"
+            class="cls-input-large"
+          />
+          <span
+            (click)="showPassword = !showPassword"
+            nz-icon
+            [nzType]="showPassword ? 'eye-invisible' : 'eye'"
+            nzTheme="outline"
+            class="cls-eye"
+          ></span>
+        </div>
+
+        <button
+          class="cls-btn-login"
+          (click)="signUp()"
+          [disabled]="!formRegister.valid"
+        >
+          Crear
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+.cls-home {
+  nz-table {
+    nz-table-inner-default {
+      background: var(--bg-color-third);
+    }
+  }
+
+  .cls-icon-action {
+    font-size: 16px;
+    transition: all 0.2s;
+  }
+  .cls-icon-action:hover {
+    transform: scale(1.1);
+  }
+}

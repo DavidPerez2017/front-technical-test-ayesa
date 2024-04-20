@@ -51,7 +51,6 @@
     height: 50px;
     padding-left: 10px;
     overflow: hidden;
-    line-height: 50px;
     background: #001529;
     transition: all 0.3s;
 }
@@ -84,20 +83,6 @@ nz-header {
     z-index: 2;
 }
 
-.app-header {
-    background: #fff;
-    box-shadow: 0 1px 4px rgb(119 104 249);
-    position: relative;
-    height: 50px;
-    padding: 0;
-    align-items: center;
-    justify-content: flex-start;
-    display: flex;
-    width: 100%;
-    border-bottom: 1px solid #292929;
-    overflow: hidden;
-}
-
 nz-content {
     // margin: 24px;
     .cls-page-header {
@@ -107,11 +92,10 @@ nz-content {
 }
 
 .inner-content {
-    // padding: 24px;
     background: #fff;
     height: 100%;
-    // overflow: hidden;
     overflow: auto;
+    padding: 30px 40px;
 }
 
 .ant-menu.ant-menu-dark,
@@ -237,4 +221,29 @@ nz-content {
     .cls-items-sidebar {
         height: calc(100vh - 50px);
     }
+}
+
+footer {
+    background-color: #222;
+    color: #fff;
+    font-size: 14px;
+    bottom: 0;
+    position: fixed;
+    left: 0;
+    right: 0;
+    text-align: center;
+    z-index: 999;
+}
+
+footer p {
+    margin: 10px 0;
+}
+
+footer i {
+    color: red;
+}
+
+footer a {
+    color: #3c97bf;
+    text-decoration: none;
 }

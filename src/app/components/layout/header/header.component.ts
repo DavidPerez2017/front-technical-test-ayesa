@@ -15,6 +15,7 @@ import { SharedZorroModule } from "../../../shared/shared-zorro.module";
 import { CommonModule, isPlatformBrowser } from "@angular/common";
 import { TitanqUtils } from "../../../libraries/utils";
 import { TranslateService } from "@ngx-translate/core";
+import { AuthService } from "../../../services/auth.service";
 
 @Component({
   selector: "app-header",
@@ -41,6 +42,7 @@ export class HeaderComponent implements OnInit {
 
   private translate = inject(TranslateService);
   public globalService = inject(GlobalService);
+  public authService = inject(AuthService);
 
   constructor(
     private router: Router,
@@ -65,16 +67,8 @@ export class HeaderComponent implements OnInit {
 
   change(event: any): void {}
 
-  closeSesion(): void {
-    // this.timeService.activeTimes = []
-    // this.layoutService.setType('full')
-    // this.authService.closeSesion()
-    // this.timeService.counters = {}
-  }
-
-  openHeader(): void {
-    // this.layoutService.title = 'Mis notas'
-    // this.router.navigate(['/notes'])
+  logout(): void {
+    this.authService.logout();
   }
 
   goRouter(path: string, id?: string): void {
@@ -87,18 +81,6 @@ export class HeaderComponent implements OnInit {
     this.closeDrawer();
   }
 
-  scroll(event: any, element: string, center?: boolean): void {
-    TitanqUtils.scroll(event, element, center);
-    this.closeDrawer();
-  }
-
-  openEmail() {
-    if (isPlatformBrowser(this.platformId)) {
-      this.globalService.eventGoogleAnalytics("click-email", "click");
-      window.location.href = "mailto:werepairhouseus@gmail.com";
-    }
-  }
-
   close(): void {
     this.visibleMenuMobile = false;
   }
@@ -107,17 +89,5 @@ export class HeaderComponent implements OnInit {
     setTimeout(() => {
       this.visibleMenuMobile = false;
     }, 500);
-  }
-
-  clickWhatAsApp(): void {
-    this.globalService.eventGoogleAnalytics(
-      "click-whatasApp",
-      "click",
-      "click-whatasApp"
-    );
-    window.open(
-      "https://wa.me/19087644319?text=Hello%20I%20need%20a%20service",
-      "_blank"
-    );
   }
 }

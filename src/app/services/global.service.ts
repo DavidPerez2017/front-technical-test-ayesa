@@ -3,15 +3,11 @@ import { BehaviorSubject, Subject } from "rxjs";
 import { DeviceDetectorService } from "ngx-device-detector";
 import { environment } from "../../environments/environment";
 
-declare var gtag: Function;
-
 @Injectable({
   providedIn: "root",
 })
 export class GlobalService {
   subjectLanguage: Subject<any> = new BehaviorSubject("en");
-  subjectSound: Subject<any> = new BehaviorSubject("");
-
   isSpinning = false;
   device = {
     isMobile: false,
@@ -20,7 +16,6 @@ export class GlobalService {
     isDesktop: false,
   };
 
-  system = "titanq";
   currentRoute = "";
 
   public deviceService = inject(DeviceDetectorService);
@@ -53,22 +48,6 @@ export class GlobalService {
       setTimeout(() => {
         this.isSpinning = state;
       }, 800);
-    }
-  }
-
-  // use gtag.js to send Google Analytics Events
-  public eventGoogleAnalytics(
-    action: string,
-    eventCategory?: string,
-    eventLabel?: string,
-    value?: string
-  ) {
-    if (environment.production) {
-      gtag("event", action, {
-        ...(eventCategory && { event_category: eventCategory }),
-        ...(eventLabel && { event_label: eventLabel }),
-        ...(value && { value: value }),
-      });
     }
   }
 }
