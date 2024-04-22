@@ -1,72 +1,102 @@
-<div class="cls-column cls-gap-20 cls-w-100 cls-home cls-a-center">
-  <h3>Administración de usuarios</h3>
-  <nz-table
-    #columnTable
-    [nzData]="listOfData"
-    [nzScroll]="{ x: '400px' }"
-    style="width: 600px"
-    nzSize="middle"
-  >
-    <thead>
-      <tr>
-        <th nzLeft>Correo</th>
-        <th nzLeft>Nombre</th>
-        <th>
-          <div class="cls-row cls-a-center cls-j-end"><span>Action</span></div>
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let data of columnTable.data">
-        <td nzLeft>{{ data.email }}</td>
-        <td nzLeft>
-          @if(!data['edit']){
-          <span>{{ data.name }}</span>
-          } @else {
-          <input
-            type="text"
-            nz-input
-            [(ngModel)]="data.name"
-            minlength="10"
-            maxlength="150"
-            nzSize="small"
-            (keyup.enter)="updateName(data)"
-          />
-          }
-        </td>
-        <td>
-          <div class="cls-row cls-gap-10 cls-a-center cls-j-end">
-            @if(data['edit']){
-            <span
-              nz-icon
-              nzType="close-circle"
-              nzTheme="outline"
-              class="cls-icon-action cls-cursor-p"
-              (click)="data['edit'] = false"
-            ></span>
-            } @else {
-            <span
-              nz-icon
-              nzType="edit"
-              nzTheme="outline"
-              class="cls-icon-action cls-cursor-p"
-              (click)="startEditUser(data)"
-            ></span>
-            }
+<div class="cls-column cls-w-100 cls-home cls-a-center">
+  <div class="cls-column cls-gap-20 cls-a-start">
+    <div class="cls-row-between cls-w-100 cls-a-center">
+      <h3>Administración de usuarios</h3>
+      @if(modeEdit){
+      <span style="color: gray">Presione la tecla "Enter" para guardar</span>
+      }
+    </div>
+    <nz-spin [nzSpinning]="isSpinning">
+      <nz-table
+        #columnTable
+        [nzData]="listOfData"
+        [nzScroll]="{ x: '400px' }"
+        style="width: 600px"
+        nzSize="middle"
+        nzNoResult="Aún no hay usuarios registrados"
+      >
+        <thead>
+          <tr>
+            <th nzLeft>Correo</th>
+            <th nzLeft>Nombre</th>
+            <th>
+              <div class="cls-row cls-a-center cls-j-end">
+                <span>Acción</span>
+              </div>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          @for(data of columnTable.data; track data.email; let idx = $index){
+          <tr>
+            <td nzLeft>
+              <div
+                style="height: 62px"
+                class="cls-row cls-j-start cls-a-center"
+              >
+                <span>{{ data.email }}</span>
+              </div>
+            </td>
+            <td nzLeft>
+              @if(!data['edit']){
+              <span>{{ data.name }}</span>
+              } @else {
+              <input
+                type="text"
+                nz-input
+                [(ngModel)]="data.name"
+                minlength="10"
+                maxlength="150"
+                nzSize="small"
+                (keyup.enter)="updateName(data)"
+              />
+              }
+            </td>
+            <td>
+              <div class="cls-row cls-gap-10 cls-a-center cls-j-end">
+                @if(data['edit']){
+                <span
+                  role="button"
+                  nz-icon
+                  nzType="close-circle"
+                  nzTheme="outline"
+                  class="cls-icon-action cls-cursor-p"
+                  (click)="cancelEditUser(data)"
+                ></span>
+                } @else {
+                <span
+                  role="button"
+                  nz-icon
+                  nzType="edit"
+                  nzTheme="outline"
+                  nz-tooltip
+                  nzTooltipTitle="Editar usuario"
+                  nzTooltipPlacement="bottom"
+                  class="cls-icon-action cls-cursor-p"
+                  (click)="startEditUser($event, data)"
+                ></span>
+                }
 
-            <span
-              nz-icon
-              nzType="delete"
-              nzTheme="outline"
-              class="cls-icon-action cls-cursor-p"
-              nz-popconfirm
-              nzPopconfirmTitle="¿Estás seguro de eliminar el usuario?"
-              (nzOnConfirm)="deleteUser(data)"
-              nzPopconfirmPlacement="leftBottom"
-            ></span>
-          </div>
-        </td>
-      </tr>
-    </tbody>
-  </nz-table>
+                <span
+                  role="button"
+                  nz-icon
+                  nzType="delete"
+                  nzTheme="outline"
+                  class="cls-icon-action cls-cursor-p"
+                  nz-tooltip
+                  nzTooltipTitle="Eliminar usuario"
+                  nzTooltipPlacement="bottom"
+                  nz-popconfirm
+                  nzPopconfirmTitle="¿Estás seguro de eliminar el usuario?"
+                  (nzOnConfirm)="deleteUser(data, idx)"
+                  nzPopconfirmPlacement="leftBottom"
+                ></span>
+              </div>
+            </td>
+          </tr>
+          }
+        </tbody>
+      </nz-table>
+    </nz-spin>
+  </div>
 </div>

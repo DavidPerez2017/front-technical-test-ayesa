@@ -1,59 +1,67 @@
-<div class="cls-login cls-column cls-a-center cls-j-center">
-  <div class="container" id="container">
-    <div class="form-container sign-in-container" [formGroup]="formLogin">
-      <div class="cls-form">
-        <h1>Iniciar sesión</h1>
+<nz-spin [nzSpinning]="isSpinning">
+  <div class="cls-login cls-column cls-a-center cls-j-center">
+    <div class="container" id="container">
+      <div class="form-container sign-in-container" [formGroup]="formLogin">
+        <div class="cls-form">
+          <h1>Iniciar sesión</h1>
 
-        <input
-          type="email"
-          placeholder="Correo"
-          nz-input
-          formControlName="email"
-          nzSize="large"
-          class="cls-input-large"
-        />
-
-        <div
-          class="cls-content-pass cls-row cls-a-center cls-j-center cls-w-100"
-        >
           <input
-            [type]="showPassword ? 'text' : 'password'"
-            placeholder="Password"
+            type="email"
+            placeholder="Correo"
             nz-input
-            formControlName="password"
-            minlength="8"
-            maxlength="20"
+            formControlName="email"
             nzSize="large"
             class="cls-input-large"
           />
-          <span
-            (click)="showPassword = !showPassword"
-            nz-icon
-            [nzType]="showPassword ? 'eye-invisible' : 'eye'"
-            nzTheme="outline"
-            class="cls-eye"
-          ></span>
-        </div>
 
-        <button
-          class="cls-btn-login"
-          (click)="login()"
-          [disabled]="!formLogin.valid"
-        >
-          Entrar
-        </button>
+          <div
+            class="cls-content-pass cls-row cls-a-center cls-j-center cls-w-100"
+          >
+            <input
+              [type]="showPassword ? 'text' : 'password'"
+              placeholder="Password"
+              nz-input
+              formControlName="password"
+              minlength="8"
+              maxlength="20"
+              nzSize="large"
+              class="cls-input-large"
+            />
+            <span
+              (click)="showPassword = !showPassword"
+              nz-icon
+              [nzType]="showPassword ? 'eye-invisible' : 'eye'"
+              nzTheme="outline"
+              class="cls-eye"
+            ></span>
+          </div>
+
+          <button
+            class="cls-btn-login"
+            (click)="login()"
+            [disabled]="!formLogin.valid"
+          >
+            Entrar
+          </button>
+        </div>
       </div>
-    </div>
-    <div class="overlay-container">
-      <div class="overlay">
-        <div class="overlay-panel overlay-right">
-          <h1 class="cls-title-register">Hola ¡bienvenido a Ayesa!</h1>
-          <p class="cls-text-ayesa">
-            Crea una cuenta y comienza tu viaje con nosotros.
-          </p>
-          <button class="cls-btn-login cls-btn-ghost" id="signUp" (click)="clickSignUp()">Crear</button>
+      <div class="overlay-container">
+        <div class="overlay">
+          <div class="overlay-panel overlay-right">
+            <h1 class="cls-title-register">Hola ¡bienvenido a Ayesa!</h1>
+            <p class="cls-text-ayesa">
+              Crea una cuenta y comienza tu viaje con nosotros.
+            </p>
+            <button
+              class="cls-btn-login cls-btn-ghost"
+              id="signUp"
+              (click)="clickSignUp()"
+            >
+              Crear
+            </button>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+</nz-spin>

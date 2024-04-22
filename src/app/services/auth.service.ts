@@ -1,4 +1,5 @@
-import { Injectable, inject } from "@angular/core";
+import { isPlatformBrowser } from "@angular/common";
+import { Inject, Injectable, PLATFORM_ID, inject } from "@angular/core";
 import { Router } from "@angular/router";
 
 @Injectable({
@@ -12,7 +13,10 @@ export class AuthService {
     isAuthenticate: false,
   };
   private token: string = "";
-  constructor(private route: Router) {}
+  constructor(
+    @Inject(PLATFORM_ID) private platformId: any,
+    private route: Router
+  ) {}
 
   public getUser(): User | null {
     return this.user;
@@ -31,10 +35,20 @@ export class AuthService {
   }
 
   public logout(): void {
-    localStorage.clear();
-    this.setToken("");
-    this.setUser(null);
-    this.route.navigate(["login"]);
+    if (isPlatformBrowser(this.platformId) && localStorage) {
+      localStorage.clear();
+      this.setToken("");
+      this.setUser(null);
+      this.route.navigate(["login"]);
+    }
+  }
+
+  public autoLogin(user: User, token: string): void {
+    this.setToken(token);
+    this.setUser(user);
+    this.route.navigate(["/home"]);
+    localStorage.setItem("user", JSON.stringify(user));
+    localStorage.setItem("tok", token);
   }
 }
 

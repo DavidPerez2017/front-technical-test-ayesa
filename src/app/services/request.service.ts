@@ -17,7 +17,7 @@ export class RequestService {
   ): Observable<any> {
     let path = environment.webServices.urlRequest;
 
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("tok");
 
     const config = {
       headers: {
@@ -30,6 +30,7 @@ export class RequestService {
     try {
       //HTTP GET Request
       if (type == "get") {
+        data ? config : delete config["body"];
         return this.http.get(path + url, config);
       }
 
