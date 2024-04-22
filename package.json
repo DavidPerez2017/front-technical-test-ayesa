@@ -1,5 +1,5 @@
 {
-  "name": "app-landing-titanq",
+  "name": "app-ayesa",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -8,7 +8,7 @@
     "build-prod": "ng build --configuration production --aot",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:app-landing-titanq": "node dist/app-landing-titanq/server/server.mjs"
+    "serve:ssr:app-ayesa": "node dist/app-ayesa/server/server.mjs"
   },
   "private": true,
   "dependencies": {
