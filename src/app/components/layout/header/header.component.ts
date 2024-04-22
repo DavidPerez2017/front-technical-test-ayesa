@@ -7,13 +7,10 @@ import {
   ViewEncapsulation,
   inject,
 } from "@angular/core";
-
-import { NzModalService } from "ng-zorro-antd/modal";
 import { Router } from "@angular/router";
 import { GlobalService } from "../../../services/global.service";
 import { SharedZorroModule } from "../../../shared/shared-zorro.module";
 import { CommonModule, isPlatformBrowser } from "@angular/common";
-import { TitanqUtils } from "../../../libraries/utils";
 import { TranslateService } from "@ngx-translate/core";
 import { AuthService } from "../../../services/auth.service";
 
@@ -28,9 +25,6 @@ import { AuthService } from "../../../services/auth.service";
 })
 export class HeaderComponent implements OnInit {
   visibleMenuMobile: boolean = false;
-
-  currentClient: string = "";
-
   public getScreenWidth: any;
   public getScreenHeight: any;
 

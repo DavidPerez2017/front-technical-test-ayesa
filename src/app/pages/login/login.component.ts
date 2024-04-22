@@ -36,7 +36,15 @@ export class LoginComponent {
     private messageFenix: MessageFenix
   ) {
     this.formLogin = this.fb.group({
-      email: [null, [Validators.required]],
+      email: [
+        null,
+        [
+          Validators.required,
+          Validators.pattern(
+            "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$"
+          ),
+        ],
+      ],
       password: [null, [Validators.required, Validators.minLength(8)]],
     });
   }

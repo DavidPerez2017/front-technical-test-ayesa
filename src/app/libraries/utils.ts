@@ -1,4 +1,4 @@
-export class TitanqUtils {
+export class Utils {
   public static filterArrayByString(mainArr: any, searchText: any): any {
     if (searchText === '') {
       return mainArr;
@@ -75,16 +75,16 @@ export class TitanqUtils {
     return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
   }
 
-  public static filterListTitanq(event: any, allRows: any[], rows: any[]): any {
+  public static filterList(event: any, allRows: any[], rows: any[]): any {
     let val = event.target.value.toLowerCase();
-    val = TitanqUtils.removeAccents(val);
+    val = Utils.removeAccents(val);
     rows = allRows;
     // tslint:disable-next-line: typedef
     const filters = rows.filter(function (objeto) {
       // tslint:disable-next-line: forin
       for (const i in objeto) {
         let valorObjeto = String(objeto[i]);
-        valorObjeto = TitanqUtils.removeAccents(valorObjeto);
+        valorObjeto = Utils.removeAccents(valorObjeto);
         const existe = valorObjeto.toLowerCase().indexOf(val) !== -1 || !val;
         if (existe) {
           return objeto;
@@ -126,8 +126,8 @@ export class TitanqUtils {
   }
 
   public static searchInString(value: string, searchText: any): any {
-    const valueClear = TitanqUtils.removeAccents(value).toLowerCase();
-    const searchClear = TitanqUtils.removeAccents(searchText).toLowerCase();
+    const valueClear = Utils.removeAccents(value).toLowerCase();
+    const searchClear = Utils.removeAccents(searchText).toLowerCase();
 
     return valueClear.includes(searchClear);
   }
@@ -199,7 +199,7 @@ export class TitanqUtils {
     const filteredList = [];
 
     for (const key in objArray) {
-      if (TitanqUtils.searchInString(objArray[key][property], textSearch)) {
+      if (Utils.searchInString(objArray[key][property], textSearch)) {
         filteredList.push(objArray[key]);
       }
     }

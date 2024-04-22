@@ -10,7 +10,12 @@
       <nz-table
         #columnTable
         [nzData]="listOfData"
-        [nzScroll]="{ x: '400px' }"
+        nzPaginationType="small"
+        [nzVirtualItemSize]="4"
+        [nzFrontPagination]="false"
+        [nzShowPagination]="false"
+        [nzVirtualForTrackBy]="trackByIndex"
+        [nzScroll]="{ x: '400px', y: '440px' }"
         style="width: 600px"
         nzSize="middle"
         nzNoResult="Aún no hay usuarios registrados"

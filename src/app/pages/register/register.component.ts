@@ -24,6 +24,7 @@ import { MessageFenix } from "../../libraries/message";
 export class RegisterComponent {
   formRegister: FormGroup = new FormGroup({});
   showPassword: boolean = false;
+  isSpinning: boolean = false;
 
   private authService = inject(AuthService);
   public globalService = inject(GlobalService);
@@ -58,6 +59,7 @@ export class RegisterComponent {
    */
   signUp(): void {
     try {
+      this.isSpinning = true;
       const data = this.formRegister.getRawValue();
       data["password"] = md5(data["password"]);
       this.requestService.uRequest("Auth/signUp", "post", data).subscribe({
@@ -80,13 +82,16 @@ export class RegisterComponent {
           } else {
             this.messageFenix.openMessageToastType("error", res.error);
           }
+          this.isSpinning = false;
         },
         error: (info) => {
           console.error(info?.error);
+          this.isSpinning = false;
         },
       });
     } catch (exc) {
       console.error(exc);
+      this.isSpinning = false;
     }
   }
 

@@ -1,5 +1,15 @@
 .cls-login {
     height: calc(100vh - 100px);
+
+    nz-form-item {
+        width: 100%;
+        nz-form-control {
+            min-width: 100%;
+        }
+        nz-form-item-feedback-icon.ant-input-suffix {
+            display: none;
+        }
+    }
     .cls-content-pass {
         margin: 0 0 8px 0;
         position: relative;

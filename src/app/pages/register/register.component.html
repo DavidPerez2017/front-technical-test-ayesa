@@ -1,112 +1,120 @@
-<div class="cls-register cls-column cls-a-center cls-j-center">
-  <div class="container" id="container">
-    <form
-      nz-form
-      autofill="off"
-      autocomplete="off"
-      class="form-container sign-in-container"
-      [formGroup]="formRegister"
-    >
-      <div class="cls-form">
-        <div class="cls-row cls-a-center cls-gap-10">
-          <span
-            nz-icon
-            nzType="arrow-left"
-            nzTheme="outline"
-            (click)="goRouter()"
-            class="cls-cursor-p"
-            nz-tooltip
-            nzTooltipTitle="Ir al login"
-            nzTooltipPlacement="bottom"
-          ></span>
-          <h1>Crea tu cuenta</h1>
-        </div>
+<nz-spin [nzSpinning]="isSpinning">
+  <div class="cls-register cls-column cls-a-center cls-j-center">
+    <div class="container" id="container">
+      <form
+        nz-form
+        autofill="off"
+        autocomplete="off"
+        class="form-container sign-in-container"
+        [formGroup]="formRegister"
+      >
+        <div class="cls-form">
+          <div class="cls-row cls-a-center cls-gap-10">
+            <span
+              nz-icon
+              nzType="arrow-left"
+              nzTheme="outline"
+              (click)="goRouter()"
+              class="cls-cursor-p"
+              nz-tooltip
+              nzTooltipTitle="Ir al login"
+              nzTooltipPlacement="bottom"
+            ></span>
+            <h1>Crea tu cuenta</h1>
+          </div>
 
-        <nz-form-item>
-          <nz-form-label [nzSpan]="5">Correo</nz-form-label>
-          <nz-form-control
-            nzHasFeedback
-            [nzSpan]="12"
-            [nzErrorTip]="errorRequired"
-          >
-            <input
-              autocomplete="off"
-              type="email"
-              placeholder="Ejemplo: micorreo@dominio"
-              nz-input
-              formControlName="email"
-              nzSize="large"
-              class="cls-input-large" /></nz-form-control
-        ></nz-form-item>
-
-        <nz-form-item>
-          <nz-form-label [nzSpan]="5">Nombre</nz-form-label>
-          <nz-form-control
-            nzHasFeedback
-            [nzSpan]="12"
-            [nzErrorTip]="errorRequired"
-          >
-            <input
-              autocomplete="off"
-              type="text"
-              placeholder="Nombre"
-              nz-input
-              formControlName="name"
-              nzSize="large"
-              class="cls-input-large"
-            /> </nz-form-control
-        ></nz-form-item>
-
-        <nz-form-item class="cls-form-item-pass">
-          <nz-form-control nzHasFeedback [nzSpan]="12" [nzErrorTip]="errorPass">
-            <nz-form-label [nzSpan]="10">Contraseña</nz-form-label>
-            <nz-input-group
-              [nzSuffix]="sufixShowPass"
-              style="padding: 0 10px 0 0 !important"
+          <nz-form-item>
+            <nz-form-label [nzSpan]="5">Correo</nz-form-label>
+            <nz-form-control
+              nzHasFeedback
+              [nzSpan]="12"
+              [nzErrorTip]="errorRequired"
             >
               <input
-                autocomplete="new-password"
-                [type]="showPassword ? 'text' : 'password'"
-                placeholder="Mínimo 8 caracteres"
+                autocomplete="off"
+                type="email"
+                placeholder="Ejemplo: micorreo@dominio"
                 nz-input
-                formControlName="password"
-                minlength="8"
-                maxlength="20"
+                formControlName="email"
+                nzSize="large"
+                class="cls-input-large" /></nz-form-control
+          ></nz-form-item>
+
+          <nz-form-item>
+            <nz-form-label [nzSpan]="5">Nombre</nz-form-label>
+            <nz-form-control
+              nzHasFeedback
+              [nzSpan]="12"
+              [nzErrorTip]="errorRequired"
+            >
+              <input
+                autocomplete="off"
+                type="text"
+                placeholder="Nombre"
+                nz-input
+                formControlName="name"
                 nzSize="large"
                 class="cls-input-large"
-                style="margin: 0 !important"
-              />
-              <ng-template #errorPass let-control>
-                @if (control.errors?.['minlength']) { La contraseña debe tener
-                al menos 8 caracteres } @if (control.errors?.['required']) {
-                Campo requerido }
-              </ng-template>
-            </nz-input-group>
-          </nz-form-control>
+              /> </nz-form-control
+          ></nz-form-item>
 
-          <ng-template #sufixShowPass>
-            <span
-              (click)="showPassword = !showPassword"
-              nz-icon
-              [nzType]="showPassword ? 'eye-invisible' : 'eye'"
-              nzTheme="outline"
-              class="cls-eye"
-            ></span>
-          </ng-template>
-        </nz-form-item>
+          <nz-form-item class="cls-form-item-pass">
+            <nz-form-control
+              nzHasFeedback
+              [nzSpan]="12"
+              [nzErrorTip]="errorPass"
+            >
+              <nz-form-label [nzSpan]="10">Contraseña</nz-form-label>
+              <nz-input-group
+                [nzSuffix]="sufixShowPass"
+                style="padding: 0 10px 0 0 !important"
+              >
+                <input
+                  autocomplete="new-password"
+                  [type]="showPassword ? 'text' : 'password'"
+                  placeholder="Mínimo 8 caracteres"
+                  nz-input
+                  formControlName="password"
+                  minlength="8"
+                  maxlength="20"
+                  nzSize="large"
+                  class="cls-input-large"
+                  style="margin: 0 !important"
+                />
+                <ng-template #errorPass let-control>
+                  @if (control.errors?.['minlength']) { La contraseña debe tener
+                  al menos 8 caracteres } @if (control.errors?.['required']) {
+                  Campo requerido }
+                </ng-template>
+              </nz-input-group>
+            </nz-form-control>
 
-        <button
-          class="cls-btn-login"
-          (click)="signUp()"
-          [disabled]="!formRegister.valid"
-        >
-          Crear
-        </button>
-      </div>
+            <ng-template #sufixShowPass>
+              <span
+                (click)="showPassword = !showPassword"
+                nz-icon
+                [nzType]="showPassword ? 'eye-invisible' : 'eye'"
+                nzTheme="outline"
+                class="cls-eye"
+              ></span>
+            </ng-template>
+          </nz-form-item>
 
-      <ng-template #errorRequired let-control>
-        @if (control.errors?.['required']) { Campo requerido }
-      </ng-template>
-    </form>
+          <button
+            class="cls-btn-register cls-mt-20"
+            (click)="signUp()"
+            [disabled]="!formRegister.valid"
+          >
+            Crear
+          </button>
+        </div>
+
+        <ng-template #errorRequired let-control>
+          @if (control.errors?.['required']) { Campo requerido } 
+          @else if(control.errors?.['pattern']) { El formato del correo es incorrecto
+          }
+        </ng-template>
+      </form>
+    </div>
   </div>
-</div>
+</nz-spin>

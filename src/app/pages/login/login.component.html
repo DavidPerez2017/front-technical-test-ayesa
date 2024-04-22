@@ -5,36 +5,59 @@
         <div class="cls-form">
           <h1>Iniciar sesión</h1>
 
-          <input
-            type="email"
-            placeholder="Correo"
-            nz-input
-            formControlName="email"
-            nzSize="large"
-            class="cls-input-large"
-          />
+          <nz-form-item>
+            <nz-form-label [nzSpan]="10">Usuario / Correo</nz-form-label>
+            <nz-form-control
+              nzHasFeedback
+              [nzSpan]="12"
+              [nzErrorTip]="errorRequired"
+            >
+              <input
+                autocomplete="off"
+                type="email"
+                placeholder="Ejemplo: micorreo@dominio"
+                nz-input
+                formControlName="email"
+                nzSize="large"
+                class="cls-input-large" /></nz-form-control
+          ></nz-form-item>
 
-          <div
-            class="cls-content-pass cls-row cls-a-center cls-j-center cls-w-100"
-          >
-            <input
-              [type]="showPassword ? 'text' : 'password'"
-              placeholder="Password"
-              nz-input
-              formControlName="password"
-              minlength="8"
-              maxlength="20"
-              nzSize="large"
-              class="cls-input-large"
-            />
-            <span
-              (click)="showPassword = !showPassword"
-              nz-icon
-              [nzType]="showPassword ? 'eye-invisible' : 'eye'"
-              nzTheme="outline"
-              class="cls-eye"
-            ></span>
-          </div>
+          <nz-form-item class="cls-form-item-pass">
+            <nz-form-control
+              nzHasFeedback
+              [nzSpan]="12"
+              [nzErrorTip]="errorRequired"
+            >
+              <nz-form-label [nzSpan]="10">Contraseña</nz-form-label>
+              <nz-input-group
+                [nzSuffix]="sufixShowPass"
+                style="padding: 0 10px 0 0 !important"
+              >
+                <input
+                  autocomplete="new-password"
+                  [type]="showPassword ? 'text' : 'password'"
+                  placeholder=""
+                  nz-input
+                  formControlName="password"
+                  minlength="8"
+                  maxlength="20"
+                  nzSize="large"
+                  class="cls-input-large"
+                  style="margin: 0 !important"
+                />
+              </nz-input-group>
+            </nz-form-control>
+
+            <ng-template #sufixShowPass>
+              <span
+                (click)="showPassword = !showPassword"
+                nz-icon
+                [nzType]="showPassword ? 'eye-invisible' : 'eye'"
+                nzTheme="outline"
+                class="cls-eye"
+              ></span>
+            </ng-template>
+          </nz-form-item>
 
           <button
             class="cls-btn-login"
@@ -65,3 +88,10 @@
     </div>
   </div>
 </nz-spin>
+
+<ng-template #errorRequired let-control>
+  @if(control.errors?.['required']) { Campo requerido } 
+  @else if(control.errors?.['pattern']) { El formato del correo es incorrecto } 
+  @else if (control.errors?.['minlength']) { La contraseña debe tener al menos 8
+  caracteres }
+</ng-template>

@@ -16,7 +16,6 @@ import {
 import { GlobalService } from "../../services/global.service";
 import { TranslateModule, TranslateService } from "@ngx-translate/core";
 import { FormsModule } from "@angular/forms";
-import { AuthService } from "../../services/auth.service";
 import { RequestService } from "../../services/request.service";
 import { MessageFenix } from "../../libraries/message";
 
@@ -39,8 +38,12 @@ export class AdminUsersComponent implements OnInit, AfterContentInit {
   listOfData: User[] = [];
   modeEdit = false;
   isSpinning = true;
+
+  trackByIndex(_: number, data: any): number {
+    return data.index;
+  }
+
   private translate = inject(TranslateService);
-  private authService = inject(AuthService);
   public globalService = inject(GlobalService);
   public requestService = inject(RequestService);
 
@@ -93,29 +96,6 @@ export class AdminUsersComponent implements OnInit, AfterContentInit {
     user["edit"] = true;
     user["namePrevius"] = user["name"];
     this.modeEdit = true;
-    try {
-      this.isSpinning = true;
-      this.requestService
-        .uRequest(`User/delUser/${user.email}`, "delete")
-        .subscribe({
-          next: (res) => {
-            if (res.response) {
-              this.updateModeEdition();
-            } else {
-              this.messageFenix.openMessageToastType("error", res.error);
-              user["name"] = user["namePrevius"];
-            }
-            this.isSpinning = false;
-          },
-          error: (info) => {
-            console.error(info?.error);
-            this.isSpinning = false;
-          },
-        });
-    } catch (e) {
-      console.error(e);
-      this.isSpinning = false;
-    }
   }
 
   cancelEditUser(user: any) {
@@ -151,8 +131,30 @@ export class AdminUsersComponent implements OnInit, AfterContentInit {
   }
 
   updateName(user: any) {
-    user["edit"] = false;
-    this.updateModeEdition();
+    try {
+      user["edit"] = false;
+      this.isSpinning = true;
+      this.requestService
+        .uRequest(`User/editUser/${user.email}`, "patch", user)
+        .subscribe({
+          next: (res) => {
+            if (res.response) {
+              this.updateModeEdition();
+            } else {
+              this.messageFenix.openMessageToastType("error", res.error);
+              user["name"] = user["namePrevius"];
+            }
+            this.isSpinning = false;
+          },
+          error: (info) => {
+            console.error(info?.error);
+            this.isSpinning = false;
+          },
+        });
+    } catch (e) {
+      console.error(e);
+      this.isSpinning = false;
+    }
   }
 
   updateModeEdition(): void {
