@@ -70,23 +70,61 @@ export class AdminUsersComponent implements OnInit, AfterContentInit {
   }
 
   ngAfterViewInit(): void {
-    //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
-    //Add 'implements AfterViewInit' to the class.
     setTimeout(() => {
-      this.driveService.startSteps([
-        {
-          element: ".cls-edit",
-          title: "Editar",
-          description: "Inicia la edición del nombre de un usuario",
-        },
-
-        {
-          element: ".cls-delete",
-          title: "Eliminar",
-          description: "En caso de querer eliminar un usario",
-        },
-      ]);
+      const infoFirst = localStorage.getItem("admin-users-info");
+      if (!infoFirst) {
+        this.startInfo();
+        localStorage.setItem("admin-users-info", "true");
+      }
     }, 500);
+  }
+
+  /**
+   * @description Method that show info of use of the module
+   * @param {type} parameter
+   * @author David Pérez
+   * @date 19/04/2024
+   * @returns {type}
+   */
+  startInfo(): void {
+    this.driveService.startSteps([
+      {
+        element: "#idAdmin",
+        title: "Tutorial",
+        description:
+          "A continuación podrás ver un breve tutorial de las funciones del módulo",
+      },
+      {
+        element: ".cls-edit",
+        title: "Editar",
+        description: /*html*/ `
+                    <div class="cls-column  cls-gap-10">
+                      <span>
+                        Clic aquí para iniciar la <b>edición</b> de un usuario.
+                      </span>
+                      <span>
+                        Una vez se inicies la edición podrás modificar el nombre del usuario.
+                      </span>
+                      <span>
+                        Presiona la tecla Enter para guardar.
+                      </span>
+                    </div>`,
+      },
+
+      {
+        element: ".cls-delete",
+        title: "Eliminar",
+        description: /*html*/ `
+                    <div class="cls-column  cls-gap-10">
+                      <span>
+                        Clic aquí para iniciar la <b>eliminación</b> de un usuario.
+                      </span>
+                      <span>
+                        Una vez se inicies la eliminación, se te solicitará una confirmación.
+                      </span>
+                    </div>`,
+      },
+    ]);
   }
 
   getAllUsers(): void {
@@ -112,6 +150,13 @@ export class AdminUsersComponent implements OnInit, AfterContentInit {
     }
   }
 
+  /**
+   * @description Clic in button edit for start the edition of the user
+   * @param {type} parameter
+   * @author David Pérez
+   * @date 19/04/2024
+   * @returns {type}
+   */
   startEditUser(event: any, user: any) {
     event.stopPropagation();
     event.preventDefault();
@@ -126,6 +171,13 @@ export class AdminUsersComponent implements OnInit, AfterContentInit {
     this.updateModeEdition();
   }
 
+  /**
+   * @description Clic in button edit for the edition of the user
+   * @param {type} parameter
+   * @author David Pérez
+   * @date 19/04/2024
+   * @returns {type}
+   */
   deleteUser(user: any, index: number) {
     try {
       this.isSpinning = true;

@@ -4,7 +4,21 @@
     [ngStyle]="{ width: globalService.device.isDesktop ? '600px' : '98%' }"
   >
     <div class="cls-row-between cls-w-100 cls-a-center">
-      <h3>@if(globalService.device.isDesktop){Administración de} Usuarios</h3>
+      <h3>
+        @if(globalService.device.isDesktop){Administración de} Usuarios
+        <span
+          role="button"
+          nz-icon
+          nzType="info-circle"
+          nzTheme="outline"
+          class="cls-icon-action cls-cursor-p cls-delete cls-ml-10"
+          nz-tooltip
+          nzTooltipTitle="Información de uso"
+          nzTooltipPlacement="bottom"
+          (click)="startInfo()"
+        ></span>
+      </h3>
+
       @if(modeEdit){
       <span style="color: gray">Presione la tecla "Enter" para guardar</span>
       }

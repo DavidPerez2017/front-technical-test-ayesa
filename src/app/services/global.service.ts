@@ -1,7 +1,6 @@
 import { Injectable, inject } from "@angular/core";
 import { BehaviorSubject, Subject } from "rxjs";
 import { DeviceDetectorService } from "ngx-device-detector";
-import { environment } from "../../environments/environment";
 
 @Injectable({
   providedIn: "root",

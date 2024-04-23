@@ -36,7 +36,7 @@ export class DriveService {
       showButtons: buttons,
       nextBtnText: "Siguiente",
       prevBtnText: "Anterior",
-      doneBtnText: "Entendido",
+      doneBtnText: "Fin",
       showProgress: true,
       steps: stepsNew,
     });
