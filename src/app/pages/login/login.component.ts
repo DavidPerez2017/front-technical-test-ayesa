@@ -1,4 +1,4 @@
-import { Component, inject } from "@angular/core";
+import { Component, OnDestroy, inject } from "@angular/core";
 import {
   FormBuilder,
   FormGroup,
@@ -13,16 +13,17 @@ import { GlobalService } from "../../services/global.service";
 import { RequestService } from "../../services/request.service";
 import { MessageFenix } from "../../libraries/message";
 import { md5 } from "../../libraries/md5";
+import { CommonModule } from "@angular/common";
 
 @Component({
   selector: "app-login",
   standalone: true,
-  imports: [SharedZorroModule, ReactiveFormsModule, FormsModule],
+  imports: [SharedZorroModule, CommonModule, ReactiveFormsModule, FormsModule],
   templateUrl: "./login.component.html",
   styleUrl: "./login.component.scss",
   host: { ngSkipHydration: "true" },
 })
-export class LoginComponent {
+export class LoginComponent implements OnDestroy {
   formLogin: FormGroup = new FormGroup({});
   showPassword: boolean = false;
   isSpinning: boolean = false;
@@ -47,6 +48,11 @@ export class LoginComponent {
       ],
       password: [null, [Validators.required, Validators.minLength(8)]],
     });
+    this.globalService.layoutType = "full";
+  }
+
+  ngOnDestroy(): void {
+    this.globalService.layoutType = "main";
   }
 
   /**
@@ -58,6 +64,10 @@ export class LoginComponent {
    */
   login(): void {
     try {
+      if (!this.formLogin.valid) {
+        return;
+      }
+
       this.isSpinning = true;
       const data = this.formLogin.getRawValue();
       data["password"] = md5(data["password"]);

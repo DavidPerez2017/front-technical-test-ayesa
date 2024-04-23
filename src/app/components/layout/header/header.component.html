@@ -35,5 +35,48 @@
 </ng-template>
 
 <ng-template #temHeaderMobile>
-  <div class="cls-row-between cls-a-center cls-w-100"></div>
+  <div class="cls-row-between cls-a-center cls-w-100">
+    <span role="button" class="cls-cursor-p" (click)="goRouter('/home')"
+      >LOGO EMPRESA</span
+    >
+
+    <button
+      class="cls-title-menu"
+      nz-button
+      nzType="default"
+      (click)="openMenuMobile()"
+      nzSize="large"
+    >
+      Menú
+    </button>
+
+    <nz-drawer
+      [nzClosable]="true"
+      [nzVisible]="visibleMenuMobile"
+      [nzPlacement]="'right'"
+      [nzCloseIcon]="'arrow-right'"
+      nzTitle="Menú"
+      nzExtra=""
+      (nzOnClose)="closeMainMobile()"
+    >
+      <ng-container *nzDrawerContent>
+        <div class="cls-column cls-gap-20">
+          <span role="button" class="cls-cursor-p" (click)="goRouter('/users')"
+            >Gestión de usuarios</span
+          >
+
+          <span
+            role="button"
+            class="cls-row cls-a-center cls-gap-20 cls-cursor-p"
+            nz-popconfirm
+            nzPopconfirmTitle="¿Estás seguro de cerrar sesión?"
+            (nzOnConfirm)="logout()"
+            nzPopconfirmPlacement="leftBottom"
+          >
+            <span> Cerrar sesión</span>
+          </span>
+        </div>
+      </ng-container></nz-drawer
+    >
+  </div>
 </ng-template>

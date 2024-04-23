@@ -17,6 +17,7 @@ export class GlobalService {
   };
 
   currentRoute = "";
+  layoutType: "full" | "main" = "main";
 
   public deviceService = inject(DeviceDetectorService);
 

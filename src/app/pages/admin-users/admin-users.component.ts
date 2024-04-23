@@ -18,6 +18,7 @@ import { TranslateModule, TranslateService } from "@ngx-translate/core";
 import { FormsModule } from "@angular/forms";
 import { RequestService } from "../../services/request.service";
 import { MessageFenix } from "../../libraries/message";
+import { DriveService } from "../../services/drive.service";
 
 @Component({
   selector: "admin-users",
@@ -46,6 +47,7 @@ export class AdminUsersComponent implements OnInit, AfterContentInit {
   private translate = inject(TranslateService);
   public globalService = inject(GlobalService);
   public requestService = inject(RequestService);
+  public driveService = inject(DriveService);
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: any,
@@ -65,6 +67,26 @@ export class AdminUsersComponent implements OnInit, AfterContentInit {
         this.translate.use(lang);
       }
     });
+  }
+
+  ngAfterViewInit(): void {
+    //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
+    //Add 'implements AfterViewInit' to the class.
+    setTimeout(() => {
+      this.driveService.startSteps([
+        {
+          element: ".cls-edit",
+          title: "Editar",
+          description: "Inicia la edición del nombre de un usuario",
+        },
+
+        {
+          element: ".cls-delete",
+          title: "Eliminar",
+          description: "En caso de querer eliminar un usario",
+        },
+      ]);
+    }, 500);
   }
 
   getAllUsers(): void {

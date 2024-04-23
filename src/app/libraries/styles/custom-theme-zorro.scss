@@ -156,3 +156,9 @@ nz-form-label {
 .ant-input-suffix {
     min-width: 20px;
 }
+
+@media (max-width: 575px) {
+    .ant-form-item .ant-form-item-label {
+        min-width: 100%;
+    }
+}

@@ -25,6 +25,7 @@ import { AuthService } from "../../../services/auth.service";
 })
 export class HeaderComponent implements OnInit {
   visibleMenuMobile: boolean = false;
+
   public getScreenWidth: any;
   public getScreenHeight: any;
 
@@ -83,5 +84,14 @@ export class HeaderComponent implements OnInit {
     setTimeout(() => {
       this.visibleMenuMobile = false;
     }, 500);
+  }
+
+
+  openMenuMobile(): void {
+    this.visibleMenuMobile = true;
+  }
+
+  closeMainMobile(): void {
+    this.visibleMenuMobile = false;
   }
 }

@@ -1,4 +1,4 @@
-import { Component, inject } from "@angular/core";
+import { Component, OnDestroy, inject } from "@angular/core";
 import {
   FormBuilder,
   FormGroup,
@@ -21,7 +21,7 @@ import { MessageFenix } from "../../libraries/message";
   templateUrl: "./register.component.html",
   styleUrl: "./register.component.scss",
 })
-export class RegisterComponent {
+export class RegisterComponent implements OnDestroy {
   formRegister: FormGroup = new FormGroup({});
   showPassword: boolean = false;
   isSpinning: boolean = false;
@@ -48,6 +48,11 @@ export class RegisterComponent {
       name: [null, [Validators.required]],
       password: [null, [Validators.required, Validators.minLength(8)]],
     });
+    this.globalService.layoutType = "full";
+  }
+
+  ngOnDestroy(): void {
+    this.globalService.layoutType = "main";
   }
 
   /**

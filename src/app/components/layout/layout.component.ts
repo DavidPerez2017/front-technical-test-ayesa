@@ -5,6 +5,7 @@ import {
   OnInit,
   PLATFORM_ID,
   ViewEncapsulation,
+  inject,
 } from "@angular/core";
 
 import { NavigationEnd, Router, RouterOutlet } from "@angular/router";
@@ -29,17 +30,13 @@ export class LayoutComponent implements OnInit {
   screenWidth: number = 0;
   selectItem: any = null;
 
+  public globalService = inject(GlobalService);
+
   constructor(
     public authService: AuthService,
     private router: Router,
-    private globalService: GlobalService,
     @Inject(PLATFORM_ID) private platformId: any
   ) {
-    // this.router.events.subscribe((val) => {
-    //   if (val instanceof NavigationEnd) {
-    //     this.selectItem = this.layoutService.getSelectItem(val.url);
-    //   }
-    // });
     if (isPlatformBrowser(this.platformId)) {
       this.screenWidth = window.innerWidth;
     }

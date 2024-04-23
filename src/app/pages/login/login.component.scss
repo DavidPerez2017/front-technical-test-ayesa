@@ -1,6 +1,5 @@
 .cls-login {
     height: calc(100vh - 100px);
-
     nz-form-item {
         width: 100%;
         nz-form-control {
@@ -13,6 +12,12 @@
     .cls-content-pass {
         margin: 0 0 8px 0;
         position: relative;
+    }
+
+    .cls-link-register {
+        color: gray;
+        text-decoration: underline;
+        text-underline-position: under;
     }
 
     .container {
@@ -74,8 +79,8 @@
     }
 
     .sign-in-container {
-        left: 0;
         width: 50%;
+        left: 0;
         z-index: 2;
     }
 
@@ -178,18 +183,17 @@
         transform: translateX(20%);
     }
 
-    .social-container {
-        margin: 20px 0;
-    }
+    @media (max-width: 575px) {
+        h1 {
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        .container {
+            min-height: 520px;
+        }
 
-    .social-container a {
-        border: 1px solid #dddddd;
-        border-radius: 50%;
-        display: inline-flex;
-        justify-content: center;
-        align-items: center;
-        margin: 0 5px;
-        height: 40px;
-        width: 40px;
+        .sign-in-container {
+            width: 100%;
+        }
     }
 }

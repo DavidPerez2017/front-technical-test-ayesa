@@ -1,4 +1,6 @@
 export const environment = {
   production: false,
-  webServices: { urlRequest: "http://localhost:3000/" },
+  webServices: {
+    urlRequest: "https://ayesa-service.davidperezarias.com:8108/",
+  },
 };

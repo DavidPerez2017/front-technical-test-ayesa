@@ -1,13 +1,16 @@
 <nz-layout class="app-layout" style="background: #001628">
   <nz-layout class="cls-layout">
-    @if(authService.getUser()?.isAuthenticate){
+    @if(authService.getUser()?.isAuthenticate && globalService.layoutType ==
+    'main'){
     <app-header class="cls-w-100"></app-header>
     }
 
     <nz-content>
       <div class="inner-content">
         <router-outlet></router-outlet>
+        @if(globalService.layoutType == 'main'){
         <app-footer></app-footer>
+        }
       </div>
     </nz-content>
   </nz-layout>

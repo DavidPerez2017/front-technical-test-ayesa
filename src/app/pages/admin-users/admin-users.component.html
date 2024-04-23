@@ -1,12 +1,15 @@
 <div class="cls-column cls-w-100 cls-home cls-a-center">
-  <div class="cls-column cls-gap-20 cls-a-start">
+  <div
+    class="cls-column cls-gap-20 cls-a-start"
+    [ngStyle]="{ width: globalService.device.isDesktop ? '600px' : '98%' }"
+  >
     <div class="cls-row-between cls-w-100 cls-a-center">
-      <h3>Administración de usuarios</h3>
+      <h3>@if(globalService.device.isDesktop){Administración de} Usuarios</h3>
       @if(modeEdit){
       <span style="color: gray">Presione la tecla "Enter" para guardar</span>
       }
     </div>
-    <nz-spin [nzSpinning]="isSpinning">
+    <nz-spin [nzSpinning]="isSpinning" style="max-width: 100%">
       <nz-table
         #columnTable
         [nzData]="listOfData"
@@ -22,9 +25,9 @@
       >
         <thead>
           <tr>
-            <th nzLeft>Correo</th>
-            <th nzLeft>Nombre</th>
-            <th>
+            <th nzWidth="190px">Correo</th>
+            <th nzWidth="190px">Nombre</th>
+            <th nzRight="0" nzWidth="80px">
               <div class="cls-row cls-a-center cls-j-end">
                 <span>Acción</span>
               </div>
@@ -34,7 +37,7 @@
         <tbody>
           @for(data of columnTable.data; track data.email; let idx = $index){
           <tr>
-            <td nzLeft>
+            <td nzWidth="190px">
               <div
                 style="height: 62px"
                 class="cls-row cls-j-start cls-a-center"
@@ -42,7 +45,7 @@
                 <span>{{ data.email }}</span>
               </div>
             </td>
-            <td nzLeft>
+            <td nzWidth="190px">
               @if(!data['edit']){
               <span>{{ data.name }}</span>
               } @else {
@@ -57,7 +60,7 @@
               />
               }
             </td>
-            <td>
+            <td nzRight="0" nzWidth="80px">
               <div class="cls-row cls-gap-10 cls-a-center cls-j-end">
                 @if(data['edit']){
                 <span
@@ -77,7 +80,7 @@
                   nz-tooltip
                   nzTooltipTitle="Editar usuario"
                   nzTooltipPlacement="bottom"
-                  class="cls-icon-action cls-cursor-p"
+                  class="cls-icon-action cls-cursor-p cls-edit"
                   (click)="startEditUser($event, data)"
                 ></span>
                 }
@@ -87,7 +90,7 @@
                   nz-icon
                   nzType="delete"
                   nzTheme="outline"
-                  class="cls-icon-action cls-cursor-p"
+                  class="cls-icon-action cls-cursor-p cls-delete"
                   nz-tooltip
                   nzTooltipTitle="Eliminar usuario"
                   nzTooltipPlacement="bottom"

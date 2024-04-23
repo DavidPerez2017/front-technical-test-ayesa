@@ -104,4 +104,17 @@
             z-index: 5;
         }
     }
+
+    @media (max-width: 575px) {
+        h1 {
+            font-size: 24px;
+        }
+        .container {
+            min-height: 620px;
+        }
+
+        .cls-title {
+            margin-bottom: 20px;
+        }
+    }
 }
