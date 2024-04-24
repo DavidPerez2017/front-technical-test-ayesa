@@ -103,10 +103,10 @@ export class AdminUsersComponent implements OnInit, AfterContentInit {
                         Clic aquí para iniciar la <b>edición</b> de un usuario.
                       </span>
                       <span>
-                        Una vez se inicies la edición podrás modificar el nombre del usuario.
+                        Una vez se inicie la edición podrás modificar el nombre del usuario.
                       </span>
                       <span>
-                        Presiona la tecla Enter para guardar.
+                        Presiona la tecla <b>Enter</b> para guardar.
                       </span>
                     </div>`,
       },
@@ -120,7 +120,7 @@ export class AdminUsersComponent implements OnInit, AfterContentInit {
                         Clic aquí para iniciar la <b>eliminación</b> de un usuario.
                       </span>
                       <span>
-                        Una vez se inicies la eliminación, se te solicitará una confirmación.
+                        Una vez se inicie la eliminación, se te solicitará una confirmación.
                       </span>
                     </div>`,
       },
