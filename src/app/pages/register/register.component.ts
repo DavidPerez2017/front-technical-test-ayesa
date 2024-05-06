@@ -56,7 +56,7 @@ export class RegisterComponent implements OnDestroy {
   }
 
   /**
-   * @description Method that validates the authentication of a user
+   * @description Method to register a new user in the system
    * @param {type} parameter
    * @author David Pérez
    * @date 19/04/2024
@@ -91,15 +91,30 @@ export class RegisterComponent implements OnDestroy {
         },
         error: (info) => {
           console.error(info?.error);
+          this.messageFenix.openMessageToastType(
+            "error",
+            "Ocurrió un error comunícate con el administrador de este sitio"
+          );
           this.isSpinning = false;
         },
       });
     } catch (exc) {
       console.error(exc);
+      this.messageFenix.openMessageToastType(
+        "error",
+        "Ocurrió un error comunícate con el administrador de este sitio"
+      );
       this.isSpinning = false;
     }
   }
 
+  /**
+   * @description Method that directs to the login page
+   * @param {type} parameter
+   * @author David Pérez
+   * @date 06/05/2024
+   * @returns {type}
+   */
   goRouter(): void {
     this.route.navigate(["login"]);
   }

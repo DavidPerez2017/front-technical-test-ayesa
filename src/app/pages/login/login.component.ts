@@ -70,7 +70,7 @@ export class LoginComponent implements OnDestroy {
 
       this.isSpinning = true;
       const data = this.formLogin.getRawValue();
-      data["password"] = md5(data["password"]);
+      data["password"] = md5(data["password"]); // encryption method MD5
       this.requestService.uRequest("Auth/login", "post", data).subscribe({
         next: (res) => {
           if (res.response) {
@@ -94,15 +94,30 @@ export class LoginComponent implements OnDestroy {
         },
         error: (info) => {
           console.error(info?.error);
+          this.messageFenix.openMessageToastType(
+            "error",
+            "Ocurrió un error comunícate con el administrador de este sitio"
+          );
           this.isSpinning = false;
         },
       });
     } catch (exc) {
       console.error(exc);
+      this.messageFenix.openMessageToastType(
+        "error",
+        "Ocurrió un error comunícate con el administrador de este sitio"
+      );
       this.isSpinning = false;
     }
   }
 
+  /**
+   * @description Method that directs to the registration page
+   * @param {type} parameter
+   * @author David Pérez
+   * @date 06/05/2024
+   * @returns {type}
+   */
   clickSignUp(): void {
     this.route.navigate(["/register"]);
   }

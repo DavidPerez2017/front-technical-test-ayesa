@@ -1,7 +1,6 @@
 import {
   Component,
   OnInit,
-  AfterContentInit,
   ViewEncapsulation,
   PLATFORM_ID,
   Inject,
@@ -14,11 +13,12 @@ import {
   isPlatformBrowser,
 } from "@angular/common";
 import { GlobalService } from "../../services/global.service";
-import { TranslateModule, TranslateService } from "@ngx-translate/core";
+import { TranslateModule } from "@ngx-translate/core";
 import { FormsModule } from "@angular/forms";
 import { RequestService } from "../../services/request.service";
 import { MessageFenix } from "../../libraries/message";
 import { DriveService } from "../../services/drive.service";
+import { AdminUsersSteps } from "./admin-users-steps";
 
 @Component({
   selector: "admin-users",
@@ -35,7 +35,7 @@ import { DriveService } from "../../services/drive.service";
   encapsulation: ViewEncapsulation.None,
   host: { ngSkipHydration: "true" },
 })
-export class AdminUsersComponent implements OnInit, AfterContentInit {
+export class AdminUsersComponent implements OnInit {
   listOfData: User[] = [];
   modeEdit = false;
   isSpinning = true;
@@ -44,7 +44,6 @@ export class AdminUsersComponent implements OnInit, AfterContentInit {
     return data.index;
   }
 
-  private translate = inject(TranslateService);
   public globalService = inject(GlobalService);
   public requestService = inject(RequestService);
   public driveService = inject(DriveService);
@@ -58,15 +57,6 @@ export class AdminUsersComponent implements OnInit, AfterContentInit {
     if (isPlatformBrowser(this.platformId)) {
       this.getAllUsers();
     }
-  }
-
-  ngAfterContentInit(): void {
-    this.globalService.subjectLanguage.subscribe((lang) => {
-      if (lang) {
-        this.translate.setDefaultLang(lang);
-        this.translate.use(lang);
-      }
-    });
   }
 
   ngAfterViewInit(): void {
@@ -87,46 +77,16 @@ export class AdminUsersComponent implements OnInit, AfterContentInit {
    * @returns {type}
    */
   startInfo(): void {
-    this.driveService.startSteps([
-      {
-        element: "#idAdmin",
-        title: "Tutorial",
-        description:
-          "A continuación podrás ver un breve tutorial de las funciones del módulo",
-      },
-      {
-        element: ".cls-edit",
-        title: "Editar",
-        description: /*html*/ `
-                    <div class="cls-column  cls-gap-10">
-                      <span>
-                        Clic aquí para iniciar la <b>edición</b> de un usuario.
-                      </span>
-                      <span>
-                        Una vez se inicie la edición podrás modificar el nombre del usuario.
-                      </span>
-                      <span>
-                        Presiona la tecla <b>Enter</b> para guardar.
-                      </span>
-                    </div>`,
-      },
-
-      {
-        element: ".cls-delete",
-        title: "Eliminar",
-        description: /*html*/ `
-                    <div class="cls-column  cls-gap-10">
-                      <span>
-                        Clic aquí para iniciar la <b>eliminación</b> de un usuario.
-                      </span>
-                      <span>
-                        Una vez se inicie la eliminación, se te solicitará una confirmación.
-                      </span>
-                    </div>`,
-      },
-    ]);
+    this.driveService.startSteps(AdminUsersSteps.getStepsBasicMobile());
   }
 
+  /**
+   * @description Method that obtains all system users hosted in the database
+   * @param {type} parameter
+   * @author David Pérez
+   * @date 06/05/2024
+   * @returns {type}
+   */
   getAllUsers(): void {
     try {
       this.isSpinning = true;
@@ -165,6 +125,13 @@ export class AdminUsersComponent implements OnInit, AfterContentInit {
     this.modeEdit = true;
   }
 
+  /**
+   * @description Method that cancels editing a user
+   * @param {type} parameter
+   * @author David Pérez
+   * @date 06/05/2024
+   * @returns {type}
+   */
   cancelEditUser(user: any) {
     user["edit"] = false;
     user["name"] = user["namePrevius"];
@@ -204,6 +171,13 @@ export class AdminUsersComponent implements OnInit, AfterContentInit {
     }
   }
 
+  /**
+   * @description Method that sends the name of a user for update
+   * @param {type} parameter
+   * @author David Pérez
+   * @date 06/05/2024
+   * @returns {type}
+   */
   updateName(user: any) {
     try {
       user["edit"] = false;
@@ -231,6 +205,13 @@ export class AdminUsersComponent implements OnInit, AfterContentInit {
     }
   }
 
+  /**
+   * @description Method that triggers editing of a user's name
+   * @param {type} parameter
+   * @author David Pérez
+   * @date 06/05/2024
+   * @returns {type}
+   */
   updateModeEdition(): void {
     for (const user of this.listOfData) {
       if (user["edit"]) {

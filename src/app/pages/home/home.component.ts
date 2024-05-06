@@ -33,10 +33,8 @@ import { FormsModule } from "@angular/forms";
   host: { ngSkipHydration: "true" },
 })
 export class HomeComponent implements OnInit, AfterContentInit {
-  private translate = inject(TranslateService);
   public globalService = inject(GlobalService);
 
- 
   constructor(@Inject(PLATFORM_ID) private platformId: any) {}
 
   ngOnInit(): void {
@@ -44,14 +42,5 @@ export class HomeComponent implements OnInit, AfterContentInit {
     }
   }
 
-  ngAfterContentInit(): void {
-    this.globalService.subjectLanguage.subscribe((lang) => {
-      if (lang) {
-        this.translate.setDefaultLang(lang);
-        this.translate.use(lang);
-      }
-    });
-  }
-
-
+  ngAfterContentInit(): void {}
 }
